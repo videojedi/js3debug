@@ -15,8 +15,6 @@ WDT_T4<WDT1> wdt;
 // define the number of bytes you want to access
 #define EEPROM_SIZE 192
 
-int eeAddr = 64; //eeprom offset 
-
 StaticJsonDocument<2000> doc_tx;                 
 StaticJsonDocument<2000> doc_rx;
 
@@ -135,7 +133,6 @@ void setup() {
     Serial.printf("IP Address = ");
     Serial.println(Ethernet.localIP());
   }
-  //#endif
   server.on(F("/"), handleRoot);
   server.on(F("/styles.css"), handleCSS);
   server.on(F("/script.js"), handleScript);

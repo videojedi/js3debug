@@ -23,7 +23,6 @@ const char script[] PROGMEM = R"rawLiteral(
     document.getElementById('saveButton').addEventListener('click', saveButton);
     document.getElementById('resetButton').addEventListener('click', resetButton);
     document.getElementById('dhcpButton').addEventListener('click', dhcpButton);
-
     getLogo();
   }
     const url = '/logo'
