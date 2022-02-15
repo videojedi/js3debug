@@ -1,7 +1,5 @@
 const char script2[] PROGMEM =R"rawLiteral(
 function saveButton() {
-    var myArray = [];
-    
     var obj = {
       protocol : document.getElementById("protocol").innerHTML,
       rtrIPaddr : document.getElementById("rtrIPaddr").value,
@@ -10,7 +8,6 @@ function saveButton() {
       subnet : document.getElementById("subnet").value,
       gw : document.getElementById("gw").value,
       dhcp : document.getElementById("dhcpButton").checked,
-      gpis : myArray
     };
     Socket.send(JSON.stringify(obj));
     console.log(obj);
