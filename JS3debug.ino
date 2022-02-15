@@ -4,8 +4,7 @@
 #include "script.h"
 #include "script2.h"
 #include "logo.h"
-#include "Watchdog_t4.h"
-WDT_T4<WDT1> wdt;
+
 
 #define WEBSOCKETS_USE_ETHERNET     true
 #include <WebSockets2_Generic.h>                      
@@ -91,14 +90,7 @@ void setup() {
   Serial.begin(115200);
   //while (!Serial);
   stdPrint = &Serial;
-
-  //WatchDog Setup
-  WDT_timings_t config;
-  config.trigger = 4; /* in seconds, 0->128 */
-  config.timeout = 10; /* in seconds, 0->128 */
-  config.callback = watchDogCallback;
-  wdt.begin(config);
-
+  
   Serial.print(F("\nStarting AdvancedWebServer on ")); Serial.print(F(BOARD_NAME));
   Serial.print(F(" " )); Serial.println(SHIELD_TYPE);
   Serial.println(ETHERNET_WEBSERVER_VERSION);
@@ -160,17 +152,10 @@ void loop() {
   listenForSocketClients();
   pollSocketClients();
   check_status();
-  feedDog();
+
 }
 
-//feed watchdog every 4secs
-void feedDog() {
-  static uint32_t callback_test = millis();
-  if ( millis() - callback_test > 4000 ) {
-    callback_test = millis();
-    wdt.feed();
-  }
-}
+
 //------------------------------------------------------------------------------------------------------------------------------------
 String IpAddress2String(const IPAddress& ipAddress) {
   return String(ipAddress[0]) + String(".") + \
