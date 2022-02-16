@@ -337,7 +337,7 @@ void readConfig() {
 //------------------------------------------------------------------------------------------------------------------------------------
 void PollHardware() { 
   Serial.print("get ");
-//client.setConnectionTimeout(100);
+  client.setConnectionTimeout(100);
   if (client.connect(setupIP.rtrIPaddr, setupIP.rtrPort)) {
     Serial.println("Connected");
   } else {
