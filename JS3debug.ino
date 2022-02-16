@@ -169,6 +169,7 @@ IPAddress StringAddress2IP(const char * string) {
   if (sendVal.fromString(string)) {
     return sendVal;
   }
+    return -1;
 }
 //------------------------------------------------------------------------------------------------------------------------------------
 String sendAllvalues() {
