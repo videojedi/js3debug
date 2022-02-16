@@ -344,7 +344,7 @@ void PollHardware() {
     // if you didn't get a connection to the server:
     Serial.println("Connection failed!");
     client.close();
-    delay(500);
+
   }
   return;
 }
